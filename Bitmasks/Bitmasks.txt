@@ -1,0 +1,45 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define ll long long
+ll knowbit(ll num,ll x){
+
+    return (num>>x)&1;
+}
+
+ll bitset(ll num,ll x){
+
+    return  num|(1LL<<x);
+}
+ll Reset(ll num, ll x){
+
+    return num&(~(1LL<<x));
+}
+ll flip(ll num,ll x){
+    return num^(1LL<<x);
+}
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+
+    return 0;
+}
+
+string toBinary(long long n) {
+    if (n == 0) return "0";
+    string s = "";
+    while (n > 0) {
+        s = char('0' + (n % 2)) + s;
+        n /= 2;
+    }
+
+
+
+
+
+
+
+
+
+    return s;
+}

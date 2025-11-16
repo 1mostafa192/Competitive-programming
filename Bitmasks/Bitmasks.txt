@@ -17,13 +17,7 @@ ll Reset(ll num, ll x){
 ll flip(ll num,ll x){
     return num^(1LL<<x);
 }
-int main() {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
 
-
-    return 0;
-}
 
 string toBinary(long long n) {
     if (n == 0) return "0";
@@ -32,14 +26,15 @@ string toBinary(long long n) {
         s = char('0' + (n % 2)) + s;
         n /= 2;
     }
-
-
-
-
-
-
-
-
-
     return s;
 }
+
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(nullptr);
+
+
+    return 0;
+}
+

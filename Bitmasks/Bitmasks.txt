@@ -17,7 +17,14 @@ ll Reset(ll num, ll x){
 ll flip(ll num,ll x){
     return num^(1LL<<x);
 }
-
+int count_set_bits_ones(int num) {
+    int countt=0;
+    while (num!=0) {
+        if ((num&1)==1)countt++;
+        num=(num>>1);
+    }
+    return countt;
+}
 
 string toBinary(long long n) {
     if (n == 0) return "0";
@@ -28,13 +35,12 @@ string toBinary(long long n) {
     }
     return s;
 }
-
-
 int main() {
     ios::sync_with_stdio(false);
     cin.tie(nullptr);
 
 
+
+
     return 0;
 }
-

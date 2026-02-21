@@ -1,0 +1,21 @@
+__int128 fast_power_mod(__int128 x,__int128 b) {
+    __int128 res=1;
+    while (b>0) {
+        if (b%2==1) {
+            res=(res*x);
+        }
+        x=(x*x);
+        b/=2;
+    }
+    return  res;
+}
+ll X,N;
+ll countt=0;
+void power_sum(ll i,ll sum) {
+    if (i==50) {
+        if (sum==X) countt++;
+        return;
+    }
+    if (sum+fast_power_mod(i,N)<=X) power_sum(i+1,sum+fast_power_mod(i,N));
+    power_sum(i+1,sum);
+}

@@ -1,0 +1,28 @@
+string res="";
+string grid[101];
+int N,M;
+int E_row,E_coulm;
+void print(int x,int y) {
+    if (x==E_row-1&&y==E_coulm-1) {
+        cout<<res<<endl;
+        return;
+    }
+    if (x<N-1&&grid[x+1][y]!='#') {
+        res+='D';
+        print(x+1,y);//انت بتخليك ماشى ده هيعمل فرعين جداد ويهجرب تحت نفع ينزل تحت مش نفع يروح يجرب يمين وهكذا لحد لما مش ينفع هنا الفرع ده مش هينفع ترجع تانى بقا
+        res.pop_back();// مش بتحقق بالترتيب دى لما الى فوق تخلص والفرع يكون مش بيتنفذ تانى ترجع بقا تجرب فروع تانيه
+    }
+    if (y<M-1&&grid[x][y+1]!='#') {
+        res+='R';
+        print(x,y+1);
+        res.pop_back();
+    }
+}
+
+int main() {
+    cin>>N>>M;
+    for (int i=0;i<N;i++) cin>>grid[i];
+    cin>>E_row>>E_coulm;
+    print(0,0);
+
+}

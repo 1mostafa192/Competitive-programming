@@ -1,0 +1,62 @@
+ #include <bits/stdc++.h>
+using namespace std;
+#define fastcode   ios::sync_with_stdio(false);cin.tie(nullptr);
+#define all(x) x.begin(),x.end()
+using ll = long long;
+//--------------------------------Edge List------------------------------------------------------------------------------
+int n,m;// n is Nodes     ||    m is Edges
+vector<pair<ll,ll>>Edge_li;
+void Edge_List_direct() {// if Graph is direct
+
+ for (int i=0;i<m;i++) {
+  int u,v;cin>>u>>v;
+  Edge_li.push_back({u,v});
+ }
+
+}
+void Edge_List_not_direct() {// if Graph is not direct
+ for (int i=0;i<m;i++) {
+  int u,v;cin>>u>>v;
+  Edge_li.push_back({u,v});
+  Edge_li.push_back({v,u});
+ }
+}
+//------------------------------Optimization Edge List---------------------------------------------------
+set<pair<ll,ll>>Edge;
+void Edge_list_direct_set() {// int the find in edge is fuc find is time log n
+ int u,v;cin>>u>>v;
+ Edge.insert({u,v});
+}
+
+void Edge_list_not_direct_set() {// int the find in edge is fuc find is time log n
+ int u,v;cin>>u>>v;
+ Edge.insert({u,v});
+ Edge.insert({v,u});
+}
+//------------------------------------------------------------------------------------------------------------
+
+
+
+
+signed main() {
+cin>>n>>m;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

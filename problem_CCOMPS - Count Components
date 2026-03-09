@@ -1,0 +1,60 @@
+ #include <bits/stdc++.h>
+using namespace std;
+#define fastcode   ios::sync_with_stdio(false);cin.tie(nullptr);
+#define all(x) x.begin(),x.end()
+using ll = long long;
+vector<vector<int>>adj;
+vector<bool>vis;
+void dfs(int u) {
+ vis[u]=1;
+ for (auto it:adj[u]) {
+  if (!vis[it]) {
+   dfs(it);
+  }
+ }
+}
+void solve() {
+ int n,m;cin>>n>>m;
+ adj.assign(n+1,{});
+ vis.assign(n+1,0);
+ for (int i=1;i<=m;i++) {
+  int u,v;cin>>u>>v;
+  adj[u].push_back(v);
+  adj[v].push_back(u);
+ }
+int ans=0;
+ for (int i=1;i<=n;i++) {
+  if (!vis[i]) {
+   ans++;
+   dfs(i);
+  }
+ }
+ cout<<ans<<endl;
+
+
+
+
+}
+signed main() {
+
+
+
+solve();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

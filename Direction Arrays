@@ -1,0 +1,34 @@
+ #include <bits/stdc++.h>
+using namespace std;
+#define fastcode   ios::sync_with_stdio(false);cin.tie(nullptr);
+#define all(x) x.begin(),x.end()
+int di[] = {-1 , 1 , 0 , 0};
+int dj[] = {0 , 0 , -1 , 1};
+using ll = long long;
+void solve(int x, int y) {
+ for (int d=0;d<4;d++) {
+  int nx=x+di[d];
+  int ny=y+dj[d];
+  if (nx>=0&&ny>=0&&nx<=n&&ny<=m) {
+   // vaild تتقدر تتعامل بقا
+   // شوف عايز تتحرك فين او تعمل اى وهنا تتعامل
+  }
+ }
+}
+signed main() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

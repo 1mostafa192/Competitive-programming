@@ -1,0 +1,61 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define fastcode   ios::sync_with_stdio(false);cin.tie(nullptr);
+#define all(x) x.begin(),x.end()
+#define ll long long
+int di[] = {-1 , 1 , 0 , 0};
+int dj[] = {0 , 0 , -1 , 1};
+vector<vector<int>>adj;
+vector<bool>vis;
+vector<int>element;
+vector<int>level;
+int N,M;
+void bfs(int s) {
+    queue<int>q;
+    q.push(s);
+    vis[s]=1;
+    level[s]=0;
+    while (!q.empty()) {
+        int cur=q.front();
+        q.pop();
+        element.push_back(cur);
+        for (auto it:adj[cur]) {
+            if (!vis[it]) {
+                q.push(it);
+                vis[it]=1;
+                level[it]=level[cur]+1;
+            }
+        }
+    }
+
+}
+signed main() {
+    cin>>N>>M;
+    adj.assign(N+1,vector<int>());
+    vis.assign(N+1,0);
+    level.resize(N+1);
+    for (int i=1;i<=M;i++) {
+        int u,v;cin>>u>>v;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
+    }
+    bfs(1);
+    for (auto it:element)cout<<it<<" ";
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}

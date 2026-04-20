@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define fastcode   ios::sync_with_stdio(false);cin.tie(nullptr);
+#define all(x) x.begin(),x.end()
+#define pb push_back
+#define ll long long
+#define int long long
+ll N,M,R,L;
+vector<vector<pair<int,int>>>adj;
+vector<int>levels;
+void djikstra(int s) {
+    priority_queue<pair<int,int>,vector<pair<int,int>>,greater<>>pq;
+    pq.push({0,s});
+    levels[s]=0;
+    while (!pq.empty()) {
+        int cur=pq.top().second;
+        int d=pq.top().first;
+        pq.pop();
+        if (d!=levels[cur])continue;
+        for (auto it:adj[cur]) {
+            if (levels[it.first]>d+it.second) {
+                levels[it.first]=d+it.second;
+                pq.push({levels[it.first],it.first});
+            }
+        }
+    }
+}
+signed main() {
+    fastcode
+    int T;cin>>T;while (T--) {
+        cin>>N>>M>>R>>L;
+        adj.assign(N+1,vector<pair<int,int>>());
+        levels.assign(N+1,1e18);
+        for (int i=1;i<=M;i++) {
+            int u,v,w;cin>>u>>v>>w;
+            adj[u].push_back({v,w});
+            adj[v].push_back({u,w});
+        }
+        djikstra(R);
+        if (levels[L]==1e18)cout<<"NONE"<<endl;
+        else cout<<levels[L]<<endl;
+
+    }
+
+
+
+}

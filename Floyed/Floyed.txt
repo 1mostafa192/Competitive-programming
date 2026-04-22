@@ -1,0 +1,56 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define fastcode ios::sync_with_stdio(false);cin.tie(nullptr);
+#define all(x) x.begin(),x.end()
+#define pb push_back
+#define ll long long
+#define int long long
+ll N,M,L,R;
+vector<vector<pair<ll,ll>>>adj;
+vector<vector<int>>dis;
+vector<vector<int>>floyd(int s) {
+    for (int i=1;i<=N;i++) {
+        for (auto it:adj[i]) {
+            dis[i][it.first]=min(dis[i][it.first],it.second);
+        }
+    }
+    for (int k=1;k<=N;k++)
+        for (int u=1;u<=N;u++)
+            for (int v=1;v<=N;v++)
+                dis[u][v]=min(dis[u][v],dis[u][k]+dis[k][v]);
+
+    return dis;
+}
+
+signed main() {
+    fastcode;
+  //  int T;cin>>T;while (T--) {
+       cin>>N>>M;
+    int Q;cin>>Q;
+    adj.assign(N+1,vector<pair<int,int>>());
+    dis.assign(N+1,vector<int>(N+1,1e18));
+       //  dis.assign(N+1,1e18);
+       for (int i=1;i<=M;i++) {
+           int u,v,w;cin>>u>>v>>w;
+           adj[u].push_back({v,w});
+            adj[v].push_back({u,w});
+       }
+    auto it= floyd(1);
+       //
+       // for (int i=1;i<=N;i++)cout<<dis[i]<<" ";
+  //  }
+    while (Q--) {
+        int L,R;cin>>L>>R;
+        if (L==R)cout<<0<<endl;
+        else if (it[L][R]==1e18) cout<<-1<<endl;
+        else cout<<it[L][R]<<endl;
+
+    }
+
+
+
+
+
+
+
+}

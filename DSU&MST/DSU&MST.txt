@@ -1,0 +1,59 @@
+struct DSU {
+    vector<int> parent;
+
+    void init(int n)
+    {
+        parent.resize(n + 1);
+        for (int i = 1; i <= n; i++)
+            parent[i] = i;
+    }
+
+    int find_root(int u)
+    {
+        if (parent[u] == u)
+            return u;
+        return find_root(parent[u]);
+    }
+
+    bool merge(int u, int v)
+    {
+        int root_u = find_root(u);
+        int root_v = find_root(v);
+
+        if (root_u == root_v)
+            return 0;
+
+        parent[root_u] = root_v;
+        return 1;
+    }
+};
+
+int main() 
+{
+
+    int n, q; 
+    cin >> n >> q;
+
+    DSU d;
+    d.init(n);
+
+    while (q--)
+    {
+        int op, u, v; 
+        cin >> op >> u >> v;
+
+        if (op == 1)
+        {
+            d.merge(u, v);
+        }
+        else
+        {
+            if (d.find_root(u) == d.find_root(v))
+                cout << "YES" << endl;
+            else
+                cout << "NO" << endl;
+        }
+    }
+
+    
+}

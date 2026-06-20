@@ -130,13 +130,15 @@ ll modularExponentiation_lastmodified(ll A,ll B,ll M) {
     return  result;
 }
 //------------------------------------------------------------------------------------------------------------
-bool composite[sz+1];
-void sieve() {
-    composite[0]=composite[1]=1;
-    for (int i=2;i*i<sz;i++) {
-        if (!composite[i]) {
-            for (int j=i*i;j<=sz;j+=i) {
-                composite[j]=1;
+vector<int>prime;
+vector<int>comp;
+void sieve(int n) {
+    comp[0]=comp[1]=1;
+    for (int i=2;i<=n;i++) {
+        if (!comp[i]) {
+            prime.push_back(i);
+            for (int j=i;j<=n;j+=i) {
+                comp[j]=1;
             }
         }
     }

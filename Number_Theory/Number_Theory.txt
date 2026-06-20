@@ -145,20 +145,17 @@ void sieve(int n) {
 }
 //----------------------------------------------------------------------------------------------------------
 vector<int>prime;
-void linear_sieve()
-{
-    composite[0]=composite[1]=1;
-    for (int i=2; i<=sz; ++i)
-    {
-        if (!composite[i])
-        {
+vector<int>comp;
+void linear_sieve(int n) {
+    comp[0]=comp[1]=1;
+    for (int i=2;i<=n;i++) {
+        if (comp[i]==0) {
+            comp[i]=i;
             prime.push_back(i);
         }
-        for (int j=0; j<(int)prime.size()&&i*prime[j]<=sz; ++j)
-        {
-            composite[i * prime[j]] = 1;
-            if (i%prime[j]==0) break;
-
+        for (auto it:prime) {
+            if ((it>comp[i]||it*i>n)) break;
+            comp[i*it]=i;
         }
     }
 }
